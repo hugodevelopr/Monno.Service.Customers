@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Monno.AppService.Services;
 using Monno.Core.Commands;
 using Monno.Core.Services.Validations;
 using Monno.SharedKernel.Attributes;
@@ -11,7 +12,7 @@ public static class Extensions
     {
         services.AddCommandHandlers();
 
-        services.AddTransient<IValidationMessageService, IValidationMessageService>();
+        services.AddTransient<IValidationMessageService, ValidationMessageService>();
 
         return services;
     }

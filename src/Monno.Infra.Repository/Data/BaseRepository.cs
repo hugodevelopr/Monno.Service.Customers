@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Finvo.Infra.Repository.Data;
+namespace Monno.Infra.Repository.Data;
 
 public abstract class BaseRepository
 {
     protected BaseRepository(IConfiguration configuration)
     {
-        ConnectionString = configuration.GetConnectionString("FinvoDb");
+        ConnectionString = configuration.GetConnectionString("MonnoCustomerDb");
     }
 
     protected string? ConnectionString { get; }

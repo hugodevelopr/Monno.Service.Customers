@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Monno.Core\Monno.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Map\Customers\" />
+  </ItemGroup>
+
 </Project>

@@ -8,6 +8,10 @@ public sealed class CustomerName : IEquatable<CustomerName>
     public string LastName { get; }
     public string FullName => $"{FirstName} {LastName}";
 
+    private CustomerName()
+    {
+    }
+
     public CustomerName(string firstName, string lastName)
     {
         firstName.NotNullOrEmpty(nameof(firstName));

@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Finvo.Infra.Repository.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Monno.Core.Repositories.Messages;
@@ -10,7 +9,7 @@ namespace Monno.Infra.Repository.Data.Messages;
 public class ValidationMessageRepository : BaseRepository, IValidationMessageRepository
 {
     /// <inheritdoc />
-    public ValidationMessageRepository(IConfiguration configuration) 
+    public ValidationMessageRepository(IConfiguration configuration)
         : base(configuration)
     {
     }
@@ -22,15 +21,21 @@ public class ValidationMessageRepository : BaseRepository, IValidationMessageRep
         try
         {
             const string query = """
-
+                                    SELECT 
+                                        ErrorCode AS Code,
+                                        Message
+                                    FROM 
+                                        Messages.ValidationMessage
+                                    WHERE 
+                                        Keyword = @keyword AND Language = @language
                                  """;
 
             await conn.OpenAsync();
-            return await conn.QueryFirstOrDefaultAsync<(string, string)>(query, 
+            return await conn.QueryFirstOrDefaultAsync<(string, string)>(query,
                 new
                 {
-                    Keyword = keyword, 
-                    Language = language
+                    keyword,
+                    language
                 });
         }
         catch (Exception ex)

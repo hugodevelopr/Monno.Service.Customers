@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Finvo.Infra.Repository.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Monno.Core.Entities.Customers;
@@ -23,11 +22,16 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
         try
         {
             const string query = """
-
+                                    SELECT 
+                                        Id,
+                                        Email
+                                    FROM Customer.Customer
+                                    WHERE 
+                                        Email = @email
                                  """;
 
             await conn.OpenAsync();
-            return await conn.QueryFirstOrDefaultAsync<Customer>(query, new { Email = email });
+            return await conn.QueryFirstOrDefaultAsync<Customer>(query, new { email });
         }
         catch (Exception ex)
         {

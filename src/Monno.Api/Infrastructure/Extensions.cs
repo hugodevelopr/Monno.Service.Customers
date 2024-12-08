@@ -1,5 +1,4 @@
-﻿using Finvo.Infra.Repository;
-using Finvo.Infra.Repository.Contexts;
+﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Monno.Api.Infrastructure.Filters;
 using Monno.AppService;
@@ -38,32 +37,22 @@ public static class Extensions
 
     public static IServiceCollection AddJobs(this IServiceCollection services)
     {
-        services.AddHostedService<OutboxProcessor>();
+        //services.AddHostedService<OutboxProcessor>();
 
         return services;
     }
 
     public static IServiceCollection AddEntityFramework(this IServiceCollection services, ConfigurationManager configuration)
     {
-        const string assemblyName = "Finvo.Api";
-        var customerConnectionString = configuration.GetConnectionString("FinvoDb");
-        var storeConnectionString = configuration.GetConnectionString("FinvoStoreEventDb");
+        var connectionString = configuration.GetConnectionString("MonnoCustomerDb");
 
-        services.AddDbContext<MonnoDbContext>(options =>
+        services.AddDbContext<MonnoCustomerDbContext>(options =>
         {
             options.EnableDetailedErrors();
-            options.UseSqlServer(customerConnectionString, sqlOptions =>
+            options.UseSqlServer(connectionString, sqlOptions =>
             {
-                sqlOptions.MigrationsAssembly(assemblyName);
-            });
-        });
-
-        services.AddDbContext<MonnoStoreEventDbContext>(options =>
-        {
-            options.EnableDetailedErrors();
-            options.UseSqlServer(storeConnectionString, sqlOptions =>
-            {
-                sqlOptions.MigrationsAssembly(assemblyName);
+                sqlOptions.MigrationsAssembly("Monno.Api");
+                sqlOptions.MigrationsHistoryTable("History", "_Migrations");
             });
         });
 
