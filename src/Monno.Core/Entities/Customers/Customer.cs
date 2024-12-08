@@ -11,7 +11,6 @@ public class Customer : BaseEntity
     public string Email { get; private set; } = string.Empty;
     public CustomerName Name { get; private set; } = default!;
     public Document Document { get; private set; } = default!;
-    public Address Address { get; private set; } = default!;
     public string IpAddress { get; private set; } = string.Empty;
     public DateTime CreatedAt { get; private set; }
 

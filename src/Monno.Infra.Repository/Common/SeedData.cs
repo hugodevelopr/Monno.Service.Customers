@@ -10,7 +10,7 @@ public static class SeedData
 {
     public static void Initialize(IServiceProvider serviceProvider)
     {
-        using var context = new MonnoDbContext(serviceProvider.GetRequiredService<DbContextOptions<MonnoDbContext>>());
+        using var context = new MonnoCustomerDbContext(serviceProvider.GetRequiredService<DbContextOptions<MonnoCustomerDbContext>>());
 
         if (!context.ValidationMessages.Any())
         {

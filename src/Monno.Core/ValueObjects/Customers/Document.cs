@@ -4,6 +4,10 @@ namespace Monno.Core.ValueObjects.Customers;
 
 public sealed class Document : IEquatable<Document>
 {
+    private Document()
+    {
+    }
+
     public Document(DocumentType type, string number, string? issuer, string birthDate)
     {
         number.NotNullOrEmpty(nameof(number));

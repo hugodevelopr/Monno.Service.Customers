@@ -1,6 +1,4 @@
-﻿using Finvo.SharedKernel;
-
-namespace Monno.SharedKernel;
+﻿namespace Monno.SharedKernel;
 
 public class Result
 {
