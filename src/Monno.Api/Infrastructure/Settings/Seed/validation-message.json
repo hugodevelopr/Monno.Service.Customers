@@ -1,0 +1,26 @@
+[
+  {
+    "keyword": "NOT_EMPTY",
+    "errorCode": "",
+    "message": "",
+    "language": "en"
+  },
+  {
+    "keyword": "EMAIL_INVALID",
+    "errorCode": "",
+    "message": "",
+    "language": "en"
+  },
+  {
+    "keyword": "EMAIL_ALREADY_EXISTS",
+    "errorCode": "",
+    "message": "",
+    "language": "en"
+  },
+  {
+    "keyword": "IP_ADDRESS_INVALID",
+    "errorCode": "",
+    "message": "",
+    "language": "en"
+  }
+]

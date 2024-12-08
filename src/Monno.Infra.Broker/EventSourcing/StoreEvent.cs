@@ -1,0 +1,25 @@
+﻿using Monno.Infra.Broker.Publisher;
+using Monno.SharedKernel.Events;
+using Newtonsoft.Json;
+
+namespace Monno.Infra.Broker.EventSourcing;
+
+public class StoreEvent(IEventPublisher publisher) : IStoreEvent
+{
+    public async Task SaveEventAsync(IDomainEvent @event, Guid aggregateId, Guid whoId)
+    {
+        var eventData = new EventData()
+        {
+            Id = Guid.NewGuid(),
+            AggregateId = aggregateId,
+            WhoId = whoId,
+            EventName = @event.GetType().Name,
+            AssemblyQualifiedName = @event.GetType().AssemblyQualifiedName!,
+            Payload = JsonConvert.SerializeObject(@event),
+            ApplicationName = "Monno.Service.Customers",
+            CreatedAt = DateTime.UtcNow
+        };
+
+        await publisher.PublishAsync(eventData, "event-store");
+    }
+}
