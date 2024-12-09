@@ -1,5 +1,4 @@
 ﻿using Monno.Core.Events;
-using Monno.Core.ValueObjects;
 using Monno.Core.ValueObjects.Customers;
 using Monno.SharedKernel.Entities;
 using Monno.SharedKernel.Events;
