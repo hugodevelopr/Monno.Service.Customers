@@ -7,10 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 Console.WriteLine(FiggleFonts.Doom.Render("Monno.Service.Customers"));
 
-builder.Services.AddControllers();
 builder.Services.AddFilters();
-
 builder.Services.AddSwagger();
+builder.Services.AddMapper();
 
 builder.Services
     .AddModules()

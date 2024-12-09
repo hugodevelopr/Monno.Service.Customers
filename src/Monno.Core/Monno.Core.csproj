@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Monno.Infra.Broker\Monno.Infra.Broker.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events\DomainEvents\" />
+  </ItemGroup>
+
 </Project>

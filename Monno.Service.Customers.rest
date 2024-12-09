@@ -1,0 +1,15 @@
+@url = https://localhost:7098/api
+
+### Create a new customer
+POST {{url}}/customers
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@gmail.com",
+    "phoneNumber": "(910) 371-3690",
+    "userContext":{
+        "ipAddress": "193.186.4.240"
+    }
+}
