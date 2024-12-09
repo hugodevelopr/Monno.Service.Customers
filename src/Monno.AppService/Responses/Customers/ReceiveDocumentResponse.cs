@@ -1,6 +1,6 @@
 ﻿namespace Monno.AppService.Responses.Customers;
 
-public class ReceiveDocumentResponse
+public sealed class ReceiveDocumentResponse
 {
     
 }

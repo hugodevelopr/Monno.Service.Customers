@@ -1,6 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Monno.AppService.Commands.Customers;
+using Monno.AppService.Commands.Customers.Handlers;
+using Monno.AppService.Events.Customers;
+using Monno.AppService.Responses.Customers;
 using Monno.AppService.Services;
 using Monno.Core.Commands;
+using Monno.Core.Events;
+using Monno.Core.Events.DomainEvents;
 using Monno.Core.Services.Validations;
 using Monno.SharedKernel.Attributes;
 
@@ -11,8 +17,8 @@ public static class Extensions
     public static IServiceCollection AddAppService(this IServiceCollection services)
     {
         services.AddCommandHandlers();
-
-        services.AddTransient<IValidationMessageService, ValidationMessageService>();
+        services.AddDomainEventHandlers();
+        services.AddServices();
 
         return services;
     }
@@ -22,7 +28,7 @@ public static class Extensions
         services.Scan(s =>
             s.FromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
                 .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<,>))
-                    .WithAttribute(typeof(DecoratorAttribute)))
+                    .WithoutAttribute(typeof(DecoratorAttribute)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
 
@@ -33,6 +39,20 @@ public static class Extensions
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
 
+        return services;
+    }
+
+    private static IServiceCollection AddDomainEventHandlers(this IServiceCollection services)
+    {
+        services.AddTransient<IDomainEventHandler<CustomerCreatedEvent>, CustomerCreatedHandler>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddServices(this IServiceCollection services)
+    {
+        services.AddTransient<IValidationMessageService, ValidationMessageService>();
+        
         return services;
     }
 }
