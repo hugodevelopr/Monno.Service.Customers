@@ -8,7 +8,7 @@ public class ValidationMessageMap : IEntityTypeConfiguration<ValidationMessage>
 {
     public void Configure(EntityTypeBuilder<ValidationMessage> builder)
     {
-        builder.ToTable("Validation", "Message");
+        builder.ToTable("ErrorMessage", "Localization");
 
         builder.HasKey(x => x.Id);
 
