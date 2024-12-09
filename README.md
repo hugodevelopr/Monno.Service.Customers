@@ -1,17 +1,25 @@
 # Monno.Services.Customers
 ---
 ## Tecnologies, Architecture & Patterns
+
+### Frameworks and Libraries
  - .NET 9
+ - Entity Framework Core
+ - Dapper
+ - Automapper
+ - Fluent Validation
+ - Scrutor
+
+### Architectural Patterns
  - Event-Driven Architecture
  - CQRS Pattern
  - Outbox Pattern
- - Entity Framework Core
- - Dapper
- - Fluent Validation
- - Automapper
+ - Event Sourcing
+ - Domain Events
+
+### Messaging and Integration
+ - Azure Service Bus
+
+### API Development and Tools
  - Swagger
  - Scalar
- - Scrutor
- - Domain Events
- - Event Sourcing
- - Azure Service Bus
