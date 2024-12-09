@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Core", "3 - Core", "{56
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{4347C725-98C1-4CE7-980C-7AD24A1A87BA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Tests", "5 - Tests", "{BAFD7A4A-1536-452E-8E9A-C17BF6B46BE0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BAFD7A4A-1536-452E-8E9A-C17BF6B46BE0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monno.AppService", "src\Monno.AppService\Monno.AppService.csproj", "{E7B79C3A-A70E-4AA4-83DE-915A97F673E3}"
 EndProject
@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monno.Infra.Broker", "src\M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monno.Infra.Repository", "src\Monno.Infra.Repository\Monno.Infra.Repository.csproj", "{BED6D0F9-8A6A-4DA3-9D05-A43C36FB2358}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monno.SharedKernel", "src\Monno.SharedKernel\Monno.SharedKernel.csproj", "{4DB8283D-ACC6-41A0-B44B-E4067B30B175}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monno.SharedKernel", "src\Monno.SharedKernel\Monno.SharedKernel.csproj", "{4DB8283D-ACC6-41A0-B44B-E4067B30B175}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
