@@ -19,8 +19,7 @@ public static class Extensions
 
     public static IServiceCollection AddSwagger(this IServiceCollection services)
     {
-        services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        services.AddOpenApi();
 
         return services;
     }

@@ -1,6 +1,7 @@
 using Figgle;
 using Monno.Api.Infrastructure;
 using Monno.Infra.Repository.Common;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +25,12 @@ var services = scope.ServiceProvider;
 
 SeedData.Initialize(services);
 
-app.UseSwagger();
-app.UseSwaggerUI();
+app.MapOpenApi();
+app.MapScalarApiReference();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/openapi/v1.json", "Monno.Service.Customers API");
+});
 
 app.UseHttpsRedirection();
 
