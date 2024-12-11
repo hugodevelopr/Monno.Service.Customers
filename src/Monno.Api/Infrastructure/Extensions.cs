@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Monno.Api.Infrastructure.Filters;
 using Monno.AppService;
+using Monno.AppService.Jobs.Outbox;
 using Monno.AppService.Mappers;
 using Monno.Core;
 using Monno.Infra.Broker;
@@ -34,7 +35,7 @@ public static class Extensions
 
     public static IServiceCollection AddJobs(this IServiceCollection services)
     {
-        //services.AddHostedService<OutboxProcessor>();
+        services.AddHostedService<OutboxProcessor>();
 
         return services;
     }

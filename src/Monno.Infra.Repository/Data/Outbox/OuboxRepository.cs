@@ -23,9 +23,9 @@ public class OuboxRepository : BaseRepository, IOutboxRepository
             const string query = """
                                     SELECT
                                         Id,
-                                        AggregateId,
-                                        Type,
-                                        Data,
+                                        EventName,
+                                        Payload,
+                                        Assembly,
                                         CreatedAt
                                     FROM
                                         Outbox.Outbox

@@ -25,7 +25,7 @@ public class ValidationMessageRepository : BaseRepository, IValidationMessageRep
                                         ErrorCode AS Code,
                                         Message
                                     FROM 
-                                        Messages.ValidationMessage
+                                        Localization.ErrorMessage
                                     WHERE 
                                         Keyword = @keyword AND Language = @language
                                  """;

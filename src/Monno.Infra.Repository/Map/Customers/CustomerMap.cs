@@ -16,6 +16,9 @@ public class CustomerMap : IEntityTypeConfiguration<Customer>
             .HasMaxLength(255)
             .IsRequired();
 
+        builder.Property(x => x.State)
+            .IsRequired();
+
         builder.OwnsOne(x => x.Name, name =>
         {
             name.Property(n => n.FirstName)
