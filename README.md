@@ -20,6 +20,9 @@
 ### Messaging and Integration
  - Azure Service Bus
 
+### Vault
+ - Azure Key Vault
+
 ### API Development and Tools
  - Swagger
  - Scalar

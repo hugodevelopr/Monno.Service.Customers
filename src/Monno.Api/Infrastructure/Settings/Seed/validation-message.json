@@ -1,26 +1,26 @@
 [
   {
     "keyword": "NOT_EMPTY",
-    "errorCode": "",
-    "message": "",
+    "errorCode": "ERR001",
+    "message": "The field must not be empty.",
     "language": "en"
   },
   {
     "keyword": "EMAIL_INVALID",
-    "errorCode": "",
-    "message": "",
+    "errorCode": "ERR002",
+    "message": "The email address provided is invalid.",
     "language": "en"
   },
   {
     "keyword": "EMAIL_ALREADY_EXISTS",
-    "errorCode": "",
-    "message": "",
+    "errorCode": "ERR003",
+    "message": "The email address is already registered.",
     "language": "en"
   },
   {
     "keyword": "IP_ADDRESS_INVALID",
-    "errorCode": "",
-    "message": "",
+    "errorCode": "ERR004",
+    "message": "The IP address provided is invalid.",
     "language": "en"
   }
 ]

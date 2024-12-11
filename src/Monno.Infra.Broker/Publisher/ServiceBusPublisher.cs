@@ -9,7 +9,7 @@ namespace Monno.Infra.Broker.Publisher;
 
 public class ServiceBusPublisher(IConfiguration configuration) : IEventPublisher
 {
-    private readonly string _connectionString = configuration.GetConnectionString("AzureServiceBus")!;
+    private readonly string _connectionString = configuration.GetConnectionString("ServiceBus")!;
 
     public async Task PublishAsync<TMessage>(TMessage message, string topicName, CancellationToken cancellation = default) where TMessage : class, IIntegrationMessage
     {
