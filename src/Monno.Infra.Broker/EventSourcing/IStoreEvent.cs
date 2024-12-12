@@ -4,5 +4,5 @@ namespace Monno.Infra.Broker.EventSourcing;
 
 public interface IStoreEvent
 {
-    Task SaveEventAsync(IDomainEvent @event, Guid aggregateId, Guid whoId);
+    Task SaveEventAsync(IDomainEvent @event, Guid aggregateId, Guid actorId);
 }

@@ -6,13 +6,13 @@ namespace Monno.Infra.Broker.EventSourcing;
 
 public class StoreEvent(IEventPublisher publisher) : IStoreEvent
 {
-    public async Task SaveEventAsync(IDomainEvent @event, Guid aggregateId, Guid whoId)
+    public async Task SaveEventAsync(IDomainEvent @event, Guid aggregateId, Guid actorId)
     {
         var eventData = new EventData()
         {
             Id = Guid.NewGuid(),
             AggregateId = aggregateId,
-            WhoId = whoId,
+            ActorId = actorId,
             EventName = @event.GetType().Name,
             AssemblyQualifiedName = @event.GetType().AssemblyQualifiedName!,
             Payload = JsonConvert.SerializeObject(@event),
