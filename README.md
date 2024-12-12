@@ -17,6 +17,9 @@
  - Event Sourcing
  - Domain Events
 
+### Databases
+ - SQL Server
+
 ### Messaging and Integration
  - Azure Service Bus
 
