@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @url_api = https://localhost:7098/api
 @url_auth = https://auth.monno.tech/realms/development
 
@@ -13,6 +14,21 @@ client_id=monno-service-customers&client_secret=yRr4dlkOgGTkJdke1GJEVPpJxPLVqZNc
 
 ### Create a new customer
 POST {{url_api}}/customers
+=======
+@urlApi = https://localhost:7098/api
+@urlAuth = https://auth.monno.tech/realms/development
+
+
+### Generate Token - Machine to Machine
+POST {{urlAuth}}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=monno-service-customers&client_secret=yRr4dlkOgGTkJdke1GJEVPpJxPLVqZNc&grant_type=client_credentials
+
+
+### Create a new customer
+POST {{urlApi}}/customers
+>>>>>>> 463e743 (feat: implementado integração entre swagger e keycloak.)
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
 

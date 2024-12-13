@@ -19,7 +19,6 @@ if (!string.IsNullOrEmpty(keyVaultName))
     builder.Services.AddSingleton(_ => new SecretClient(keyVaultUri, new DefaultAzureCredential()));
 }
 
-
 builder.Logging.AddOpenTelemetry(builder.Configuration);
 
 builder.Services
