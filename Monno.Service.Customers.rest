@@ -1,7 +1,16 @@
-@url = https://localhost:7098/api
+@urlApi = https://localhost:7098/api
+@urlAuth = https://auth.monno.tech/realms/development
+
+
+### Generate Token - Machine to Machine
+POST {{urlAuth}}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=monno-service-customers&client_secret=yRr4dlkOgGTkJdke1GJEVPpJxPLVqZNc&grant_type=client_credentials
+
 
 ### Create a new customer
-POST {{url}}/customers
+POST {{urlApi}}/customers
 Content-Type: application/json
 
 {
