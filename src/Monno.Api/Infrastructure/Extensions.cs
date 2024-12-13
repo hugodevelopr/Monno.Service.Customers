@@ -1,6 +1,13 @@
-﻿using AutoMapper;
+﻿using Asp.Versioning;
+using AutoMapper;
+using Azure.Messaging.ServiceBus;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
 using Monno.Api.Infrastructure.Filters;
+using Monno.Api.Infrastructure.Settings;
 using Monno.AppService;
 using Monno.AppService.Jobs.Outbox;
 using Monno.AppService.Mappers;
@@ -8,6 +15,7 @@ using Monno.Core;
 using Monno.Infra.Broker;
 using Monno.Infra.Repository;
 using Monno.Infra.Repository.Contexts;
+using NSwag.Generation.Processors.Security;
 
 namespace Monno.Api.Infrastructure;
 
@@ -20,8 +28,51 @@ public static class Extensions
             .AddRepository()
             .AddBroker();
 
-    public static IServiceCollection AddSwagger(this IServiceCollection services)
-        => services.AddOpenApi();
+    public static IServiceCollection AddSwagger(this IServiceCollection services, IConfiguration configuration)
+    {
+        var keycloakSettings = configuration.GetSection("Keycloak").Get<KeycloakSettings>()!;
+
+        services.AddOpenApiDocument(options =>
+        {
+            options.Title = "Monno Service Customers API";
+            options.DocumentName = "v1";
+            options.Version = "v1";
+
+            options.AddSecurity("oauth2", new NSwag.OpenApiSecurityScheme()
+            {
+                Type = NSwag.OpenApiSecuritySchemeType.OAuth2,
+                Flows = new NSwag.OpenApiOAuthFlows
+                {
+                    AuthorizationCode = new NSwag.OpenApiOAuthFlow
+                    {
+                        AuthorizationUrl = $"{keycloakSettings.Authority}/protocol/openid-connect/auth",
+                        TokenUrl = $"{keycloakSettings.Authority}/protocol/openid-connect/token",
+                        Scopes = new Dictionary<string, string>()
+                        {
+                            {"openid", "Get token id, profile and email"}
+                        }
+                    }
+                }
+            });
+
+            options.OperationProcessors.Add(new OperationSecurityScopeProcessor("oauth2"));
+        });
+
+        return services;
+    }
+
+    public static IServiceCollection AddVersioning(this IServiceCollection services)
+    {
+        services.AddApiVersioning(options =>
+        {
+            options.DefaultApiVersion = new ApiVersion(1, 0);
+            options.AssumeDefaultVersionWhenUnspecified = true;
+            options.ReportApiVersions = true;
+            options.ApiVersionReader = new HeaderApiVersionReader("api-version");
+        });
+
+        return services;
+    }
 
     public static IServiceCollection AddFilters(this IServiceCollection services)
     {
@@ -66,6 +117,21 @@ public static class Extensions
 
         var mapper = mapperConfig.CreateMapper();
         services.AddSingleton(mapper);
+
+        return services;
+    }
+
+    public static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
+    {
+        var keycloakSettings = configuration.GetSection("Keycloak").Get<KeycloakSettings>()!;
+
+        services.AddAuthentication("Bearer")
+            .AddJwtBearer("Bearer", options =>
+            {
+                options.Authority = keycloakSettings.Authority;
+                options.RequireHttpsMetadata = true;
+                options.Audience = keycloakSettings.ClientId;
+            });
 
         return services;
     }

@@ -51,11 +51,30 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
         try
         {
             const string query = """
-
+                                 INSERT INTO Customer.Customer
+                                 VALUES
+                                 (
+                                     @Id,
+                                     @Email,
+                                     @FirstName,
+                                     @LastName,
+                                     @DocumentType,
+                                     @DocumentNumber,
+                                     @CreatedAt
+                                 )
                                  """;
 
             await conn.OpenAsync();
-            await conn.ExecuteAsync(query, customer);
+            await conn.ExecuteAsync(query, new
+            {
+                customer.Id,
+                customer.Email,
+                customer.Name.FirstName,
+                customer.Name.LastName,
+                DocumentType = customer.Document.Type,
+                DocumentNumber = customer.Document.Number,
+                customer.CreatedAt,
+            });
         }
         catch (Exception ex)
         {
