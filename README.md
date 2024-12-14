@@ -9,6 +9,7 @@
  - Automapper
  - Fluent Validation
  - Scrutor
+ - OpenTelemetry + Seq
 
 ### Architectural Patterns
  - Event-Driven Architecture

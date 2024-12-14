@@ -16,6 +16,8 @@ using Monno.Infra.Broker;
 using Monno.Infra.Repository;
 using Monno.Infra.Repository.Contexts;
 using NSwag.Generation.Processors.Security;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Logs;
 
 namespace Monno.Api.Infrastructure;
 
@@ -134,5 +136,19 @@ public static class Extensions
             });
 
         return services;
+    }
+
+    public static void AddOpenTelemetry(this ILoggingBuilder logging, IConfiguration configuration)
+    {
+        logging.ClearProviders();
+        logging.AddOpenTelemetry(x =>
+        {
+            x.AddOtlpExporter(options =>
+            {
+                options.Endpoint = new Uri(configuration["Seq:ServerUrl"]!);
+                options.Protocol = OtlpExportProtocol.HttpProtobuf;
+                options.Headers = configuration["Seq:ApiKey"]!;
+            });
+        });
     }
 }
