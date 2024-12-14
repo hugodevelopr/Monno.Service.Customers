@@ -1,11 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
-using Azure.Messaging.ServiceBus;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models;
 using Monno.Api.Infrastructure.Filters;
 using Monno.Api.Infrastructure.Settings;
 using Monno.AppService;
@@ -16,6 +11,9 @@ using Monno.Infra.Broker;
 using Monno.Infra.Repository;
 using Monno.Infra.Repository.Contexts;
 using NSwag.Generation.Processors.Security;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Resources;
 
 namespace Monno.Api.Infrastructure;
 
@@ -134,5 +132,25 @@ public static class Extensions
             });
 
         return services;
+    }
+
+    public static void AddOpenTelemetry(this ILoggingBuilder logging, IConfiguration configuration)
+    {
+        logging.ClearProviders();
+        logging.AddOpenTelemetry(x =>
+        {
+            x.SetResourceBuilder(ResourceBuilder.CreateEmpty()
+                .AddService("Monno.Service.Customers"));
+
+            x.IncludeScopes = true;
+            x.IncludeFormattedMessage = true;
+
+            x.AddOtlpExporter(options =>
+            {
+                options.Endpoint = new Uri(configuration["Seq:ServerUrl"]!);
+                options.Protocol = OtlpExportProtocol.HttpProtobuf;
+                options.Headers = configuration["Seq:ApiKey"]!;
+            });
+        });
     }
 }

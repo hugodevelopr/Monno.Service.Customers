@@ -19,11 +19,14 @@ if (!string.IsNullOrEmpty(keyVaultName))
     builder.Services.AddSingleton(_ => new SecretClient(keyVaultUri, new DefaultAzureCredential()));
 }
 
-builder.Services.AddFilters();
-builder.Services.AddMapper();
-builder.Services.AddSwagger(builder.Configuration);
-builder.Services.AddAuthentication(builder.Configuration);
-builder.Services.AddVersioning();
+builder.Logging.AddOpenTelemetry(builder.Configuration);
+
+builder.Services
+    .AddMapper()
+    .AddFilters()
+    .AddVersioning()
+    .AddSwagger(builder.Configuration)
+    .AddAuthentication(builder.Configuration);
 
 builder.Services
     .AddModules()
