@@ -15,6 +15,7 @@ using OpenTelemetry.Exporter;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Resources;
 
+
 namespace Monno.Api.Infrastructure;
 
 public static class Extensions
