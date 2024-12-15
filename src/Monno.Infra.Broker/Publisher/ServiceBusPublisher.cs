@@ -1,9 +1,9 @@
 ﻿using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.Configuration;
-using Monno.Infra.Broker.Messages;
 using Monno.SharedKernel.Common;
 using Newtonsoft.Json;
 using System.Text;
+using Monno.Messaging;
 
 namespace Monno.Infra.Broker.Publisher;
 
