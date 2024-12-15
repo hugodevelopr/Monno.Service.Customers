@@ -1,4 +1,4 @@
-﻿using Monno.Infra.Broker.Messages;
+﻿using Monno.Messaging;
 
 namespace Monno.Infra.Broker.Publisher;
 

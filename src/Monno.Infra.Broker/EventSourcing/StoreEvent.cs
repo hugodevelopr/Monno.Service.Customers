@@ -1,4 +1,5 @@
-﻿using Monno.Infra.Broker.Publisher;
+﻿using Monno.EventSourcing;
+using Monno.Infra.Broker.Publisher;
 using Monno.SharedKernel.Events;
 using Newtonsoft.Json;
 
@@ -10,7 +11,6 @@ public class StoreEvent(IEventPublisher publisher) : IStoreEvent
     {
         var eventData = new EventData()
         {
-            Id = Guid.NewGuid(),
             AggregateId = aggregateId,
             ActorId = actorId,
             EventName = @event.GetType().Name,

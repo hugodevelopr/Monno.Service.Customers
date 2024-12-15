@@ -1,4 +1,4 @@
-﻿using Monno.Infra.Broker.Messages;
+﻿using Monno.Messaging;
 using Monno.SharedKernel.Events;
 
 namespace Monno.Core.Events;
