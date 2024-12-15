@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Hosting;
 using Monno.Core.Outbox;
 using Monno.Infra.Broker;
-using Monno.Infra.Broker.Messages;
 using Monno.Infra.Broker.Publisher;
+using Monno.Messaging;
 using Monno.SharedKernel.Common;
 using Serilog;
 

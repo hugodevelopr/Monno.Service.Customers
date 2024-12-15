@@ -22,5 +22,17 @@
     "errorCode": "ERR004",
     "message": "The IP address provided is invalid.",
     "language": "en"
+  },
+  {
+    "keyword": "MAX_LENGTH",
+    "errorCode": "ERR005",
+    "message": "The field must not exceed {max} characters.",
+    "language": "en"
+  },
+  {
+    "keyword": "MIN_LENGTH",
+    "errorCode": "ERR006",
+    "message": "The field must be at least {min} characters long.",
+    "language": "en"
   }
 ]
