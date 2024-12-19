@@ -37,20 +37,11 @@ public class CreateCustomerValidator : AbstractValidator<CreateCustomerCommand>
         RuleFor(x => x.PhoneNumber)
             .NotEmpty()
             .WithMessage(service, "NOT_EMPTY");
-
-        RuleFor(x => x.UserContext.IpAddress)
-            .Must(BeValidIpAddress)
-            .WithMessage(service, "IP_ADDRESS_INVALID");
     }
 
     private async Task<bool> EmailAlreadyExists(string email, CancellationToken cancellationToken)
     {
         var customer = await _repository.GetByEmailAsync(email);
-        return customer is not null;
-    }
-
-    private bool BeValidIpAddress(string ipAddress)
-    {
-        return IPAddress.TryParse(ipAddress, out _);
+        return customer is null;
     }
 }
