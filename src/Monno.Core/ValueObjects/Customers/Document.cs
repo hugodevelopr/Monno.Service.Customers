@@ -26,6 +26,7 @@ public sealed class Document : IEquatable<Document>
 
     public enum DocumentType
     {
+        None = 0,
         SSN = 1,
         Passport = 2
     }

@@ -11,7 +11,6 @@ public class Customer : BaseEntity
     public CustomerName Name { get; private set; } = default!;
     public Document Document { get; private set; } = default!;
     public CustomerState State { get; private set; }
-    public string IpAddress { get; private set; } = string.Empty;
     public DateTime CreatedAt { get; private set; }
     public DateTime? LastUpdatedAt { get; private set; }
 
@@ -21,6 +20,7 @@ public class Customer : BaseEntity
         Email = email;
         Name = new CustomerName(firstName, lastName);
         State = CustomerState.WaitingForActivation;
+        Document = new Document(Document.DocumentType.None, "", "", "");
         CreatedAt = DateTime.UtcNow;
         LastUpdatedAt = null;
 
