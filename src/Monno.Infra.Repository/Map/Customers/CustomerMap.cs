@@ -45,9 +45,6 @@ public class CustomerMap : IEntityTypeConfiguration<Customer>
                 .IsRequired();
         });
 
-        builder.Property(x => x.IpAddress)
-            .HasMaxLength(50);
-
         builder.HasIndex(x => x.Id);
         builder.HasIndex(x => x.Email);
     }
