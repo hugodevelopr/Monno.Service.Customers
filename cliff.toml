@@ -7,7 +7,7 @@ commit_parsers = [
     { message = "^refactor", category = "Refactoring" },
     { message = "^test", category = "Tests" },
     { message = "^ci", category = "CI/CD" },
-    { message = "^.*", category = "Uncategorized" }
+    { message = ".*", category = "Others" }
 ]
 
 [changelog]
@@ -16,7 +16,7 @@ header = """
 """
 body = """
 ## {{version}} - {{timestamp}}
-{{#if commits.length}}
+{{#if commits}}
 {{#each commits}}
 - {{this.message}} ({{this.author}})
 {{/each}}
