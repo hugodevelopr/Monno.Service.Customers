@@ -7,7 +7,7 @@ commit_parsers = [
     { message = "^refactor", category = "Refactoring" },
     { message = "^test", category = "Tests" },
     { message = "^ci", category = "CI/CD" },
-    { message = ".*", category = "Others" }
+    { message = "^.*", category = "Uncategorized" }
 ]
 
 [changelog]
