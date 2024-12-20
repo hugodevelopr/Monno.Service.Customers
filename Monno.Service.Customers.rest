@@ -1,12 +1,18 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 078c0c3 (fix: ajustada integração com keyvault)
+=======
+>>>>>>> bf1b8079d79cf248f41bc55a7dba29bcc56dd038
 @url_api = https://localhost:7098/api
 @url_auth = https://auth.monno.tech/realms/development
 
 @access_token = eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3cW5nSGRXeDdWb0pBY216bFhnS0EwS2pRZ3hhTGFKakZaT096Ujh2MnFFIn0.eyJleHAiOjE3MzQ2NTUyMTcsImlhdCI6MTczNDY1NDkxNywianRpIjoiY2MxMmRiYzUtMWNjYy00ZmFiLWI4ZjItNjUzMTZhNTIzYTgwIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLm1vbm5vLnRlY2gvcmVhbG1zL2RldmVsb3BtZW50IiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjgwYWM4NzdjLWQ4ZWMtNDhlOC05YWM3LTAyOTYxNmJiMjVjMSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im1vbm5vLXNlcnZpY2UtY3VzdG9tZXJzIiwic2lkIjoiNWE3ZmNmNWEtOGFlMy00MTQxLWI0ZDItNTU1Nzk4ZTUwNTQ5IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2xvY2FsaG9zdDo3MDk4Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtZGV2ZWxvcG1lbnQiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiSHVnbyBNb3VyYSIsInByZWZlcnJlZF91c2VybmFtZSI6ImRldmVsb3Blci5odWdvbW91cmFAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ikh1Z28iLCJmYW1pbHlfbmFtZSI6Ik1vdXJhIiwiZW1haWwiOiJkZXZlbG9wZXIuaHVnb21vdXJhQGdtYWlsLmNvbSJ9.cmmzooQmgVJhf6faUqYa5XVha6JtfhgDsH9O1QAGQNCdhKtyQdxf6ea8K5CXorvzvNdIZa2jJcDvr0mYOOt_Zw-IwEpuAWX9ervWWyoKdEV6gp4sCi78kVpNoZBBwCzS6jxIyaccScJRDFba2Phg4SzJwLvp_p7mJkov2YOQl4i0S2djIHEfmJX_NxzRecJxfU-hlCaFLhnZPF_HZjFwTano4t7WsIhRfNYgpttpHmtz1MO3Xu1cC7sMWMGbUH255cw69-orleGruiN_6lOqMFPPvfhsukhL38ixCl7zGYuVzyKXpqL_jFELcHBgWaGp2lTSaVa9_aPjDotDKBY6yA
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bf1b8079d79cf248f41bc55a7dba29bcc56dd038
 
 
 ### Generate Token - Resource Owner Password Credentials
@@ -18,6 +24,7 @@ client_id=monno-service-customers&client_secret=yRr4dlkOgGTkJdke1GJEVPpJxPLVqZNc
 
 ### Create a new customer
 POST {{url_api}}/customers
+<<<<<<< HEAD
 =======
 @urlApi = https://localhost:7098/api
 @urlAuth = https://auth.monno.tech/realms/development
@@ -39,6 +46,8 @@ POST {{urlApi}}/customers
 =======
 POST {{url_api}}/customers
 >>>>>>> 078c0c3 (fix: ajustada integração com keyvault)
+=======
+>>>>>>> bf1b8079d79cf248f41bc55a7dba29bcc56dd038
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
 
