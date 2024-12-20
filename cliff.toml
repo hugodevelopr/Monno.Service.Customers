@@ -16,7 +16,7 @@ header = """
 """
 body = """
 ## {{version}} - {{timestamp}}
-{{#if commits}}
+{{#if commits.length}}
 {{#each commits}}
 - {{this.message}} ({{this.author}})
 {{/each}}
