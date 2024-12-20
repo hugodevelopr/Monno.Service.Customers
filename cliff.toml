@@ -1,0 +1,28 @@
+[git]
+commit_parsers = [
+    { message = "^feat", category = "Features" },
+    { message = "^fix", category = "Bug Fixes" },
+    { message = "^docs", category = "Documentation" },
+    { message = "^chore", category = "Chores" },
+    { message = "^refactor", category = "Refactoring" },
+    { message = "^test", category = "Tests" },
+    { message = "^ci", category = "CI/CD" },
+    { message = ".*", category = "Others" }
+]
+
+[changelog]
+header = """
+# Changelog
+"""
+body = """
+## {{version}} - {{timestamp}}
+{{#if commits}}
+{{#each commits}}
+- {{this.message}} ({{this.author}})
+{{/each}}
+{{else}}
+_No significant changes._
+{{/if}}
+"""
+footer = """
+"""
