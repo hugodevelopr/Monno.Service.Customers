@@ -1,6 +1,7 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Monno.Api.Infrastructure.Filters;
 using Monno.Api.Infrastructure.Settings;
 using Monno.AppService;
@@ -130,6 +131,15 @@ public static class Extensions
                 options.Authority = keycloakSettings.Authority;
                 options.RequireHttpsMetadata = true;
                 options.Audience = keycloakSettings.ClientId;
+
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidAudiences = new[]
+                    {
+                        "monno-service-gateway",
+                        "monno-service-customers"
+                    }
+                };
             });
 
         return services;
