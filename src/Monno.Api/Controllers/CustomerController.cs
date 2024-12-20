@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Monno.Api.Infrastructure.Controllers;
 using Monno.Api.Infrastructure.Requests;
@@ -7,6 +8,7 @@ using Monno.Core.Commands;
 
 namespace Monno.Api.Controllers;
 
+[Authorize]
 [ApiVersion("1.0")]
 [ApiController]
 [Route("api/customers")]

@@ -52,6 +52,16 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
         {
             const string query = """
                                  INSERT INTO Customer.Customer
+                                 (
+                                    Id, 
+                                    Email, 
+                                    FirstName, 
+                                    LastName, 
+                                    DocumentType, 
+                                    DocumentNumber, 
+                                    CreatedAt, 
+                                    State
+                                 )
                                  VALUES
                                  (
                                      @Id,
@@ -60,7 +70,8 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
                                      @LastName,
                                      @DocumentType,
                                      @DocumentNumber,
-                                     @CreatedAt
+                                     @CreatedAt,
+                                     @State
                                  )
                                  """;
 
@@ -73,7 +84,8 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
                 customer.Name.LastName,
                 DocumentType = customer.Document.Type,
                 DocumentNumber = customer.Document.Number,
-                customer.CreatedAt,
+                customer.State,
+                customer.CreatedAt
             });
         }
         catch (Exception ex)

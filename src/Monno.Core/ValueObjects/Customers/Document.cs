@@ -10,9 +10,6 @@ public sealed class Document : IEquatable<Document>
 
     public Document(DocumentType type, string number, string? issuer, string birthDate)
     {
-        number.NotNullOrEmpty(nameof(number));
-        birthDate.NotNullOrEmpty(nameof(birthDate));
-
         Type = type;
         Number = number;
         Issuer = issuer;
