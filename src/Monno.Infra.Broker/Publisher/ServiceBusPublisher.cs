@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Monno.SharedKernel.Common;
 using Newtonsoft.Json;
 using System.Text;
+using Azure.Security.KeyVault.Secrets;
 using Monno.Messaging;
 
 namespace Monno.Infra.Broker.Publisher;
