@@ -2,9 +2,6 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Azure.Messaging.ServiceBus;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Monno.Api.Infrastructure.Filters;
 using Monno.Api.Infrastructure.Settings;
 using Monno.AppService;
@@ -81,6 +78,7 @@ public static class Extensions
         services.AddControllers(options =>
         {
             options.Filters.Add<ApiExceptionFilter>();
+            options.Filters.Add<CaptureClientIpFilter>();
         });
 
         return services;

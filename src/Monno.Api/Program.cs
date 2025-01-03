@@ -1,6 +1,7 @@
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 using Figgle;
+using Microsoft.AspNetCore.HttpOverrides;
 using Monno.Api.Infrastructure;
 using Monno.Api.Infrastructure.Settings;
 using Monno.Infra.Repository.Common;
@@ -54,6 +55,11 @@ app.UseSwaggerUi(options =>
         ClientId = keycloakSettings.ClientId,
         ClientSecret = (keyvaultService!.GetSecret("MonnoCustomers-Keycloak-ClientSecret")).Value.Value
     };
+});
+
+app.UseForwardedHeaders(new ForwardedHeadersOptions()
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
 });
 
 app.UseHttpsRedirection();
